@@ -15,3 +15,9 @@ jobs:
             - name: Configurar Python
               uses: actions/setup-python@v5
             
+deploy:
+    needs: teste
+    runs-on: ubuntu-latest
+    
+    steps:
+        - run: echo "Deploy Realizado"

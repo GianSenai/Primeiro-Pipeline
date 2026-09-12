@@ -21,6 +21,9 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Baixar Código do Repositório
+        uses: actions/checkout@v4
+        
       - name: Gerar artefato ZIP
         run: zip -r pipeline-demo.zip .   
 

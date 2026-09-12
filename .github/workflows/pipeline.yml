@@ -17,6 +17,18 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - name: Gerar artefato ZIP
+        run: zip -r pipeline-demo.zip .   
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: codigo-buildado
+          path: pipeline-demo.zip
   teste:
     strategy:
       fail-fast: false
@@ -43,6 +55,13 @@ jobs:
           pip install -r requirements.txt
       - name: Executar Soma
         run: python soma.py
+        
+      - name: bairtefato
+        uses: actions/dowload-artefact@v4
+        with: 
+          name: codigo-buildado
+          run: unzip pipeline-demo.zip
+
 
 
   deploy:

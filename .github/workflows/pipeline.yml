@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Baixar Código do Repositório
         uses: actions/checkout@v4
-        
+
       - name: Gerar artefato ZIP
         run: zip -r pipeline-demo.zip .   
 
@@ -42,8 +42,12 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Baixar Código do Repositório
-        uses: actions/checkout@v4
+      - name: bairtefato
+        uses: actions/download-artifact@v4
+        with: 
+          name: codigo-buildado
+      - name: Extrair artefato    
+        run: unzip pipeline-demo.zip
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -59,11 +63,7 @@ jobs:
       - name: Executar Soma
         run: python soma.py
         
-      - name: bairtefato
-        uses: actions/download-artifact@v4
-        with: 
-          name: codigo-buildado
-          run: unzip pipeline-demo.zip
+      
 
 
 

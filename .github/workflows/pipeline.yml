@@ -19,7 +19,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Gerar artefato ZIP
         run: zip -r pipeline-demo.zip .   

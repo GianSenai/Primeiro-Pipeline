@@ -69,10 +69,8 @@ jobs:
 
 
 
-  deploy:
-    needs: teste
+  deploy:  
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Finalizar Deploy
-        run: echo "Deploy Realizado"
+    needs: teste
+    environment:
+    name: production

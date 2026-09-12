@@ -69,8 +69,8 @@ jobs:
 
 
 
-  deploy:  
-    runs-on: ubuntu-latest
+  deploy:
     needs: teste
+    runs-on: ubuntu-latest
     environment:
-    name: production
+      name: production

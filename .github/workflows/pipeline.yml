@@ -57,7 +57,7 @@ jobs:
         run: python soma.py
         
       - name: bairtefato
-        uses: actions/dowload-artefact@v4
+        uses: actions/download-artifact@v4
         with: 
           name: codigo-buildado
           run: unzip pipeline-demo.zip
